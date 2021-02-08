@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Input from "../../components/Input";
 import PageHeader from "../../components/PageHeader";
 
@@ -10,6 +11,8 @@ import Select from "../../components/Select";
 import api from "../../services/api";
 
 function TeacherForm() {
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
@@ -52,6 +55,7 @@ function TeacherForm() {
       })
       .then(() => {
         alert("Your form was submitted");
+        history.push("/");
       })
       .catch(() => {
         alert("I could not submit your form");
